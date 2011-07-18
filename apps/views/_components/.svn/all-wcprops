@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 45
+/sbi/!svn/ver/10/trunk/apps/views/_components
+END
+head.php
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/sbi/!svn/ver/10/trunk/apps/views/_components/head.php
+END
+nav.php
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/sbi/!svn/ver/12/trunk/apps/views/_components/nav.php
+END
+foot.php
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/sbi/!svn/ver/10/trunk/apps/views/_components/foot.php
+END

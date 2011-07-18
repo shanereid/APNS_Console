@@ -1,0 +1,12 @@
+		<?php if(!(isset($footer) && $footer === false)): ?>
+		<div class="footer">
+			<hr>
+			<span class="left" style="line-height: 27px;">
+				Copyright &copy; 2011 <a href="http://www.techlightenment.com/?utm_source=TLApp&amp;utm_medium=WFooter&amp;utm_content=" target="_blank" track="true">Techlightenment</a>
+			</span>
+			<span class="right"><span style="float: left; display: block; margin-right: 10px; line-height: 27px;">You can turbo-charge this service</span> <a class="orange_button" href="http://www.techlightenment.com/contact/?utm_source=TLApp&amp;utm_medium=WFooter&amp;utm_content=" target="_blank"><span>Find out how!</span></a>
+			</span><div style="clear: both;"></div>
+		</div>
+		<?php endif; ?>
+	</body>
+</html>

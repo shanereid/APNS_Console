@@ -1,0 +1,75 @@
+<?php
+	$install_root = str_replace(getenv("DOCUMENT_ROOT"), '', FCPATH);
+	$user = $this->quickauth->user();
+	$logged_in = $this->quickauth->logged_in();
+	$nav_items = array('Indexes'=>array($install_root.'index', false), 'My Index'=>array($install_root, false),'Brand Admin'=>array($install_root.'tracking_groups', false),'Admin'=>array($install_root.'admin', false),'Logout'=>array($install_root.'logout', false));
+	if($user->type < 4)
+		unset($nav_items['Admin']);
+	if($user->type < 2)
+		unset($nav_items['Brand Admin']);
+	if($user->type == 0) {
+		if(isset($nav_items['Logout']))
+			unset($nav_items['Logout']);
+	}	
+	if($user->client_id <= 0) {
+		if(isset($nav_items['My Index']))
+			unset($nav_items['My Index']);
+	}
+	if($user->client_id > 0 || $user->username == 'guest' || $user->type == 0) {
+		unset($nav_items['Indexes']);
+	}
+	
+	if($user->type == 5 || $user->type == 0) {
+		if(isset($nav_items['Brand Admin']))
+			unset($nav_items['Brand Admin']);
+	}
+	if(isset($presentation) && $presentation === true) {
+		if(isset($nav_items['Brand Admin']))
+			unset($nav_items['Brand Admin']);
+		if(isset($nav_items['Admin']))
+			unset($nav_items['Admin']);
+	}
+	if(isset($current) && isset($nav_items[$current]))
+		$nav_items[$current][1] = true;
+?>
+<?php if($logged_in): ?>
+<div id="navigation_bar">
+	<h1>The Social Brand Index</h1>
+	<ul>
+	<?php foreach($nav_items as $title => $item): ?>
+		<li<?=(($item[1])? ' class="current"' : '')?>><a href="<?=$item[0]?>"><?=$title?></a></li>
+	<?php endforeach; ?>
+	</ul>
+</div>
+<?php endif; ?>
+<?php if(isset($public_index) && $public_index == true): ?>
+<div id="index_bar">
+	<h1>The Social Brand Index<?=((isset($index_title) && $index_title)? ' - '.$index_title : '')?></h1>
+	<?php if(isset($index_filters) && $index_filters): ?>
+	<div class="filter-wrap">
+		<select id="metric" class="filter">
+			<option value="spr">Social Prominence Ranking</option>
+			<option value="fans">Facebook Fans</option>
+			<option value="followers">Twitter Followers</option>
+			<option value="youtube">YouTube Suscribers</option>
+			<option value="alphabetical">Alphabetical</option>
+			<option value="hitwise">Hitwise</option>
+		</select>
+		<select id="order" class="filter">
+			<option value="desc">Descending</option>
+			<option value="asc">Ascending</option>
+			<option value="fgrowth" disabled="disabled">Fastest Growth</option>
+			<option value="sgrowth" disabled="disabled">Slowest Growth</option>
+		</select>
+		<?php if($sectors): ?>
+		<select id="sector" class="filter">
+		</select>
+		<?php endif; ?>
+		<?php if($countries): ?>
+		<select id="country" class="filter">
+		</select>
+		<?php endif; ?>
+	</div>
+	<?php endif; ?>
+</div>
+<?php endif; ?>
