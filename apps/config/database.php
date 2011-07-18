@@ -40,38 +40,6 @@
 
 $active_group = 'dev';
 $active_record = TRUE;
-if(!isset($_SERVER))
-	$_SERVER = array();
-if(!isset($_SERVER['SERVER_NAME']))
-	$_SERVER['SERVER_NAME'] = 'apns.shanedev.com';
-switch($_SERVER['SERVER_NAME']) {
-	case 'apns.shanedev.com':
-		$active_group = 'live';
-		break;
-	case 'apns.local':
-		$active_group = 'dev';
-		break;
-	default:
-		$active_group = 'dev';
-		break;
-}
-
-
-$db['live']['hostname'] = 'localhost';
-$db['live']['username'] = 'apnsusr';
-$db['live']['password'] = '4pN515c00L';
-$db['live']['database'] = 'ios_push_service';
-$db['live']['dbdriver'] = 'mysql';
-$db['live']['dbprefix'] = '';
-$db['live']['pconnect'] = TRUE;
-$db['live']['db_debug'] = TRUE;
-$db['live']['cache_on'] = FALSE;
-$db['live']['cachedir'] = '';
-$db['live']['char_set'] = 'utf8';
-$db['live']['dbcollat'] = 'utf8_general_ci';
-$db['live']['swap_pre'] = '';
-$db['live']['autoinit'] = TRUE;
-$db['live']['stricton'] = FALSE;
 
 $db['dev']['hostname'] = 'localhost';
 $db['dev']['username'] = 'root';
